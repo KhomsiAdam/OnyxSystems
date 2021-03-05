@@ -1,0 +1,414 @@
+// Font : Ubuntu, Imported from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+// Color Palette
+$darker-blue: #000A2C;
+$dark-blue: #1B378C;
+$blue: #2C53C7;
+$light-blue: #3A8EC7;
+$gray: #D0D3DE;
+$white: #F3F4FA;
+$black: #252525;
+$red: #C73A3A;
+// Font Weight
+$regular: 400;
+// Button Style
+%buttons {
+    outline: none;
+    border-style: outset;
+    border: none;
+    border-radius: 10px;
+    height: 63px;
+    font-size: 26px;
+}
+// Confirmation Overlay Text
+%overlay-text {
+    color: $white;
+    font-size: 26px;
+    font-weight: $regular;
+    text-align: center;
+    width: 80%;
+    padding-bottom: 1em;
+    position: absolute;
+    left:10%;
+}
+
+// Input Styling
+%input {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: $light-blue;
+    height: 40px;
+    font-size: 16px;
+    color: $black;
+    padding-left: 10px;
+    width: 100%;
+}
+::placeholder {
+    color: $black;
+    opacity: 0.6;
+}
+
+// Resets
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: $gray;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-areas:
+        'top'
+        'middle'
+        'bottom';
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 1fr 12%;
+    grid-gap: 23px;
+    overflow: hidden;
+}
+
+// Top fixed section with logo and search bar
+header {
+    position: fixed;
+    top: 0;
+    grid-area: top;
+    padding-bottom: 23px;
+    background-color: $gray;
+    width: 100%;
+}
+// logo styling
+h1 {
+    font-size: 47px;
+    font-weight: $regular;
+    text-align: center;
+}
+.logo {
+    span {
+        color: $blue;
+    }
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+// Search Bar
+.search-container {
+    position: relative;
+    background-color: $white;
+    border-radius: 10px;
+    width: 90%;
+    height: 47px;
+    margin: 0 auto;
+}
+.search-bar {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.search {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    font-size: 25px;
+    font-weight: $regular;
+    color: $black;
+    padding-left: 0.5em;
+}
+.search-icon {
+    img {
+        padding-right: 1em;
+        padding-top: 0.5em;
+    }
+}
+
+// Main Middle section of the grid with enabled scrolling for all the products
+main {
+    grid-area: middle;
+    overflow-y: scroll;
+    //display: grid;
+}
+
+.product {
+    position: relative;
+    padding-top: 1em;
+    img {
+        position: absolute;
+        right: 0;
+        left: 80%;
+        padding-top: 11px;
+    }
+    border-radius: 10px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto 23px auto;
+    background-color: $white;
+}
+
+.base {
+    position: relative;
+    right: 0;
+    left: 10%;
+    width: 80%;
+    .name {
+        font-size: 26px;
+        font-weight: $regular;
+        color: $black;
+        padding-bottom: 10px;
+    }
+    .brand {
+        font-size: 16px;
+        font-weight: $regular;
+        color: $light-blue;
+        padding-bottom: 20px;
+    }
+}
+
+.product-details {
+    position: fixed;
+    padding-top: 1em;
+    z-index: 1;
+    img {
+        position: absolute;
+        right: 0;
+        left: 87%;
+        padding-top: 11px;
+    }
+    border-radius: 10px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto 23px auto;
+    background-color: $white;
+    left: 5%;
+}
+.details {
+    position: relative;
+    right: 0;
+    left: 10%;
+    width: 80%;
+    .name {
+        font-size: 26px;
+        font-weight: $regular;
+        color: $black;
+        padding-bottom: 10px;
+    }
+    .brand {
+        font-size: 16px;
+        font-weight: $regular;
+        color: $light-blue;
+        padding-bottom: 24px;
+    }
+    .part {
+        font-size: 16px;
+        font-weight: $regular;
+        color: $light-blue;
+        padding-bottom: 38px;
+    }
+    .spec {
+        font-size: 16px;
+        font-weight: $regular;
+        color: $black;
+        padding-bottom: 14px;
+    }
+}
+
+.add-product {
+    border-radius: 10px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto 23px auto;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    left: 5%;
+    .add-form {
+        margin: 20% 10% 15% 10%;
+    }
+    img {
+        position: absolute;
+        right: 0;
+        left: 80%;
+        padding-top: 50px;
+    }
+    input {
+        @extend %input;
+        margin: 26px auto 0 auto;
+    }
+}
+
+.edit-product {
+    border-radius: 10px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto 23px auto;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    left: 5%;
+    img {
+        position: absolute;
+        right: 0;
+        left: 80%;
+        padding-top: 50px;
+    }
+    .base-edit {
+        margin-top: 10%;
+        position: relative;
+        right: 0;
+        left: 10%;
+        width: 80%;
+        .name {
+            font-size: 26px;
+            font-weight: $regular;
+            color: $black;
+            padding-bottom: 10px;
+        }
+        .brand {
+            font-size: 16px;
+            font-weight: $regular;
+            color: $light-blue;
+            padding-bottom: 20px;
+        }
+    }
+    .edit-form {
+        margin: 0 10% auto 10%;
+    }
+    input {
+        @extend %input;
+        margin: 15px auto 26px auto;
+    }
+}
+
+.edit-confirm, .delete-confirm {
+    border-radius: 10px;
+    width: 90%;
+    height: 590px;
+    margin: 0 auto;
+    background-color: $darker-blue;
+    z-index: 2;
+    position: fixed;
+    left: 5%;
+    img {
+        position: absolute;
+        right: 0;
+        left: 77%;
+        padding-top: 27px;
+    }
+    .name {
+        @extend %overlay-text;
+        top:30%;
+    }
+    .sure {
+        @extend %overlay-text;
+        top:50%;
+    }
+}
+
+// Bottom Fixed Section with buttons and gray background
+footer {
+    position: fixed;
+    bottom: -16px;
+    grid-area: bottom;
+    text-align: center;
+    background-color: $gray;
+    width: 100%;
+    height: auto;
+    .bottom-buttons {
+        position: absolute;
+        bottom: 60px;
+        left: 5%;
+        width: 90%;
+    }
+}
+// Button that shows at the normal inventory state and when confirming add & edit forms
+.add, .confirm {
+    @extend %buttons;
+    width: 100%;
+    background-color: $blue;
+    color: $white;
+}
+// Buttons that shows with Product Details
+.view-buttons {
+    display: flex;
+    justify-content: space-between;
+    .edit {
+        @extend %buttons;
+        width: 47%;
+        background-color: $blue;
+        color: $white;
+    }
+    .delete {
+        @extend %buttons;
+        width: 47%;
+        background-color: $red;
+        color: $white;
+    }
+}
+// Buttons that shows with the confirmation overlay
+.overlay-buttons {
+    display: flex;
+    margin: 150% 5% 0 5%;
+    justify-content: space-between;
+    .yes, .no {
+        @extend %buttons;
+        width: 47%;
+        background-color: $white;
+        color: $black;
+    }
+}
+
+/* Visivility Testing */
+
+// Inventory Visibility : .product, .product-details, .add-product, .edit-product, .edit-confirm, .delete-confirm
+// Bottom Buttons Visibility : .add, .confirm, .edit, .delete, .yes, .no
+
+/* Default State */
+.product-details, .add-product, .edit-product, .edit-confirm, .delete-confirm {
+    display: none;
+}
+.edit, .delete, .confirm {
+    display: none;
+}
+
+/* Add Product State */
+/* .product-details, .edit-product, .edit-confirm, .delete-confirm {
+    display: none;
+}
+.edit, .delete, .add {
+    display: none;
+} */
+
+/* Details State */
+/* .add-product, .edit-product, .edit-confirm, .delete-confirm {
+    display: none;
+}
+.add, .confirm {
+    display: none;
+} */
+
+/* Delete Confirm Product State */
+/* .edit-confirm {
+    display: none;
+} */
+
+/* Edit Product State */
+/* .product-details, .add-product, .edit-confirm, .delete-confirm {
+    display: none;
+}
+.edit, .delete, .add {
+    display: none;
+} */
+
+/* Edit Confirm Product State */
+/* .delete-confirm {
+    display: none;
+} */
