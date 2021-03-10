@@ -1,15 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
-.add, .confirm, .view-buttons .edit, .view-buttons .delete, .overlay-buttons .yes, .overlay-buttons .no {
+.add, .confirm, #view-buttons .edit, #view-buttons .delete, .overlay-buttons .yes,
+.overlay-buttons .no {
   outline: none;
   border-style: outset;
   border: none;
   border-radius: 10px;
   height: 63px;
   font-size: 26px;
+  cursor: pointer;
 }
 
-.edit-confirm .name, .delete-confirm .name, .edit-confirm .sure, .delete-confirm .sure {
-  color: #F3F4FA;
+.edit-confirm .name,
+.delete-confirm .name, .edit-confirm .sure,
+.delete-confirm .sure {
+  color: #f3f4fa;
   font-size: 26px;
   font-weight: 400;
   text-align: center;
@@ -23,7 +27,7 @@
   outline: none;
   border: none;
   border-radius: 5px;
-  background-color: #3A8EC7;
+  background-color: #3a8ec780;
   height: 40px;
   font-size: 16px;
   color: #252525;
@@ -51,6 +55,24 @@
   opacity: 0.6;
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4fa;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a8ec7;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1b378c;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -59,13 +81,13 @@
 }
 
 body {
-  font-family: 'Ubuntu', sans-serif;
-  background-color: #D0D3DE;
+  font-family: "Ubuntu", sans-serif;
+  background-color: #d0d3de;
   display: -ms-grid;
   display: grid;
   height: 100vh;
   width: 100vw;
-      grid-template-areas: 'top' 'middle' 'bottom';
+      grid-template-areas: "top" "middle" "bottom";
   -ms-grid-columns: 100%;
       grid-template-columns: 100%;
   -ms-grid-rows: 20% 1fr 12%;
@@ -74,15 +96,34 @@ body {
   overflow: hidden;
 }
 
-header {
+nav {
+  display: none;
+}
+
+#add-desktop {
+  display: none;
+}
+
+.top-right-icons {
+  display: none;
+}
+
+.top-section {
   position: fixed;
   top: 0;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: top;
   padding-bottom: 23px;
-  background-color: #D0D3DE;
+  background-color: #d0d3de;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 h1 {
@@ -97,12 +138,11 @@ h1 {
 }
 
 .logo span {
-  color: #2C53C7;
+  color: #2c53c7;
 }
 
 .search-container {
-  position: relative;
-  background-color: #F3F4FA;
+  background-color: #f3f4fa;
   border-radius: 10px;
   width: 90%;
   height: 47px;
@@ -112,27 +152,37 @@ h1 {
 .search-bar {
   width: 100%;
   height: 100%;
-  vertical-align: middle;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .search {
   border: none;
   outline: none;
   width: 100%;
-  height: 100%;
-  background-color: #F3F4FA;
+  height: 90%;
+  background-color: #f3f4fa;
   font-size: 25px;
   font-weight: 400;
   color: #252525;
-  padding-left: 0.5em;
+  margin-left: 0.5em;
+}
+
+.search-icon {
+  padding-right: 1em;
+  cursor: pointer;
 }
 
 .search-icon img {
-  padding-right: 1em;
-  padding-top: 0.5em;
+  margin-left: auto;
+  margin-right: 4%;
 }
 
-main {
+.middle-section {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: middle;
@@ -146,21 +196,25 @@ main {
   width: 90%;
   height: auto;
   margin: 0 auto 23px auto;
-  background-color: #F3F4FA;
+  background-color: #f3f4fa;
 }
 
-.product img {
+.product .expand {
   position: absolute;
-  right: 0;
   left: 80%;
-  padding-top: 11px;
+  padding-top: 15px;
+  cursor: pointer;
+}
+
+.lap-img-container {
+  display: none;
 }
 
 .base {
   position: relative;
   right: 0;
   left: 10%;
-  width: 80%;
+  width: 70%;
 }
 
 .base .name {
@@ -173,7 +227,7 @@ main {
 .base .brand {
   font-size: 16px;
   font-weight: 400;
-  color: #3A8EC7;
+  color: #3a8ec7;
   padding-bottom: 20px;
 }
 
@@ -181,19 +235,21 @@ main {
   position: fixed;
   padding-top: 1em;
   z-index: 1;
+  display: none;
   border-radius: 10px;
   width: 90%;
-  height: auto;
+  height: 62%;
   margin: 0 auto 23px auto;
-  background-color: #F3F4FA;
+  background-color: #f3f4fa;
   left: 5%;
 }
 
-.product-details img {
+.product-details .compress {
   position: absolute;
   right: 0;
   left: 87%;
   padding-top: 11px;
+  cursor: pointer;
 }
 
 .details {
@@ -213,14 +269,14 @@ main {
 .details .brand {
   font-size: 16px;
   font-weight: 400;
-  color: #3A8EC7;
+  color: #3a8ec7;
   padding-bottom: 24px;
 }
 
 .details .part {
   font-size: 16px;
   font-weight: 400;
-  color: #3A8EC7;
+  color: #3a8ec7;
   padding-bottom: 38px;
 }
 
@@ -234,45 +290,45 @@ main {
 .add-product {
   border-radius: 10px;
   width: 90%;
-  height: auto;
+  height: 62%;
   margin: 0 auto 23px auto;
-  background-color: #F3F4FA;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  background-color: #f3f4fa;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   left: 5%;
 }
 
 .add-product .add-form {
-  margin: 20% 10% 15% 10%;
+  position: absolute;
+  left: 8%;
+  top: 15%;
 }
 
-.add-product img {
+.add-product .return {
   position: absolute;
   right: 0;
   left: 80%;
-  padding-top: 50px;
+  top: 7%;
+  cursor: pointer;
 }
 
 .add-product input {
   margin: 26px auto 0 auto;
+  width: 90%;
 }
 
 .edit-product {
   border-radius: 10px;
   width: 90%;
-  height: auto;
+  height: 62%;
   margin: 0 auto 23px auto;
-  background-color: #F3F4FA;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  background-color: #f3f4fa;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -282,19 +338,20 @@ main {
   left: 5%;
 }
 
-.edit-product img {
+.edit-product .return {
   position: absolute;
   right: 0;
   left: 80%;
-  padding-top: 50px;
+  top: 7%;
+  cursor: pointer;
 }
 
 .edit-product .base-edit {
-  margin-top: 10%;
   position: relative;
   right: 0;
   left: 10%;
-  width: 80%;
+  width: 70%;
+  top: 3%;
 }
 
 .edit-product .base-edit .name {
@@ -307,143 +364,386 @@ main {
 .edit-product .base-edit .brand {
   font-size: 16px;
   font-weight: 400;
-  color: #3A8EC7;
+  color: #3a8ec7;
   padding-bottom: 20px;
 }
 
 .edit-product .edit-form {
-  margin: 0 10% auto 10%;
+  position: absolute;
+  left: 8%;
+  top: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.edit-product .edit-form .edit-element {
+  width: auto;
 }
 
 .edit-product input {
   margin: 15px auto 26px auto;
+  width: 75vw;
 }
 
-.edit-confirm, .delete-confirm {
+.edit-confirm,
+.delete-confirm {
   border-radius: 10px;
   width: 90%;
-  height: 590px;
+  height: 73%;
   margin: 0 auto;
-  background-color: #000A2C;
-  z-index: 2;
+  background-color: #000a2c;
+  z-index: 6;
   position: fixed;
   left: 5%;
+  display: none;
 }
 
-.edit-confirm img, .delete-confirm img {
+.edit-confirm .close,
+.delete-confirm .close {
   position: absolute;
-  right: 0;
-  left: 77%;
-  padding-top: 27px;
+  top: 4.5%;
+  left: 79.5%;
+  cursor: pointer;
 }
 
-.edit-confirm .name, .delete-confirm .name {
+.edit-confirm .name,
+.delete-confirm .name {
   top: 30%;
 }
 
-.edit-confirm .sure, .delete-confirm .sure {
+.edit-confirm .sure,
+.delete-confirm .sure {
   top: 50%;
 }
 
-footer {
+.bottom-section {
   position: fixed;
   bottom: -16px;
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: bottom;
   text-align: center;
-  background-color: #D0D3DE;
+  background-color: #d0d3de;
   width: 100%;
   height: auto;
 }
 
-footer .bottom-buttons {
+.bottom-section .bottom-buttons {
   position: absolute;
   bottom: 60px;
   left: 5%;
   width: 90%;
 }
 
-.add, .confirm {
+.add {
   width: 100%;
-  background-color: #2C53C7;
-  color: #F3F4FA;
+  background-color: #2c53c7;
+  color: #f3f4fa;
 }
 
-.view-buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.confirm {
+  width: 100%;
+  background-color: #2c53c7;
+  color: #f3f4fa;
+  display: none;
+}
+
+#view-buttons {
+  display: none;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-.view-buttons .edit {
+#view-buttons .edit {
   width: 47%;
-  background-color: #2C53C7;
-  color: #F3F4FA;
+  background-color: #2c53c7;
+  color: #f3f4fa;
 }
 
-.view-buttons .delete {
+#view-buttons .delete {
   width: 47%;
-  background-color: #C73A3A;
-  color: #F3F4FA;
+  background-color: #c73a3a;
+  color: #f3f4fa;
 }
 
 .overlay-buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 150% 5% 0 5%;
+  display: none;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  margin: 0% 5% 0 5%;
+  position: relative;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  top: 86%;
 }
 
-.overlay-buttons .yes, .overlay-buttons .no {
+.overlay-buttons .yes,
+.overlay-buttons .no {
   width: 47%;
-  background-color: #F3F4FA;
+  background-color: #f3f4fa;
   color: #252525;
 }
 
-/* Visivility Testing */
-/* Default State */
-.product-details, .add-product, .edit-product, .edit-confirm, .delete-confirm {
-  display: none;
+/* Media Query for Desktop */
+@media only screen and (min-width: 1366px) {
+  body {
+    display: -ms-grid;
+    display: grid;
+        grid-template-areas: "sidebar top" "sidebar middle" "sidebar bottom";
+    -ms-grid-columns: 5% 95%;
+        grid-template-columns: 5% 95%;
+    -ms-grid-rows: 15% 1fr 10%;
+        grid-template-rows: 15% 1fr 10%;
+    grid-gap: 23px;
+    overflow: hidden;
+  }
+  .logo {
+    display: none;
+  }
+  nav {
+    display: block;
+    height: 100vh;
+    width: 90px;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 1;
+    grid-area: sidebar;
+  }
+  nav .sidebar {
+    height: 100%;
+    background: #f3f4fa;
+    width: 100%;
+    position: relative;
+  }
+  nav .sidebar .nav-icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+  }
+  nav .sidebar .sidebar-icon {
+    margin-top: 1%;
+    margin-left: 33%;
+    margin-bottom: 62%;
+    margin-right: 32%;
+    cursor: pointer;
+  }
+  .top-section {
+    position: unset;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: top;
+    width: 90%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-bottom: 0;
+  }
+  .top-section .search-container {
+    width: 30%;
+    margin: 0;
+  }
+  #add-desktop {
+    display: block;
+    width: 20%;
+    background-color: #f3f4fa;
+    color: #252525;
+    border: 3px solid #2c53c7;
+    cursor: pointer;
+    margin-left: 17.5%;
+  }
+  #add-desktop:hover {
+    background-color: #2c53c7;
+    color: #f3f4fa;
+  }
+  .disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+  .top-right-icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 200px;
+    margin-left: 17.5%;
+  }
+  .top-right-icons .tr-icon {
+    cursor: pointer;
+  }
+  .middle-section {
+    width: 98.5%;
+    height: 106%;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: middle;
+  }
+  .lap-img-container {
+    display: block;
+  }
+  .lap-img-container .lap-img {
+    position: absolute;
+    top: 0%;
+    left: 2.5%;
+    padding: 0;
+  }
+  .add-product {
+    width: 83.66%;
+    height: 75%;
+    left: 10.8%;
+  }
+  .add-product .return {
+    left: 95.7%;
+    top: 5%;
+  }
+  .add-product input {
+    margin: 35px auto 0 auto;
+    width: 70vw;
+  }
+  #view-buttons {
+    width: 83.66%;
+    height: 20%;
+    position: fixed;
+    top: 75%;
+    left: 10.8%;
+    margin: 0 auto 23px auto;
+  }
+  #view-buttons .edit {
+    width: 10%;
+    background-color: #f3f4fa;
+    color: #252525;
+    border: 3px solid #2c53c7;
+    position: absolute;
+    left: 25%;
+    top: 30%;
+  }
+  #view-buttons .edit:hover {
+    background-color: #2c53c7;
+    color: #f3f4fa;
+  }
+  #view-buttons .delete {
+    width: 10%;
+    background-color: #f3f4fa;
+    color: #252525;
+    border: 3px solid #c73a3a;
+    position: absolute;
+    right: 25%;
+    top: 30%;
+  }
+  #view-buttons .delete:hover {
+    background-color: #c73a3a;
+    color: #f3f4fa;
+  }
+  #add {
+    visibility: hidden;
+  }
+  .bottom-buttons {
+    background-color: #f3f4fa;
+    width: 83.66%;
+    height: 58%;
+    left: 10.8%;
+  }
+  .confirm {
+    width: 20%;
+    background-color: #f3f4fa;
+    color: #252525;
+    border: 3px solid #2c53c7;
+    position: fixed;
+    left: 42%;
+    top: 80%;
+  }
+  .confirm:hover {
+    background-color: #2c53c7;
+    color: #f3f4fa;
+  }
+  .product .expand {
+    left: 96%;
+    padding-top: 15px;
+    cursor: pointer;
+  }
+  .product-details {
+    width: 83.66%;
+    height: 75%;
+    left: 10.8%;
+  }
+  .product-details .compress {
+    left: 107.2%;
+    padding-top: 12px;
+    cursor: pointer;
+  }
+  .edit-product {
+    width: 83.66%;
+    height: 75%;
+    left: 10.8%;
+  }
+  .edit-product input {
+    width: 70vw;
+  }
+  .edit-product .return {
+    left: 95.7%;
+    top: 5%;
+  }
+  .edit-confirm,
+  .delete-confirm {
+    width: 83.8%;
+    height: 75%;
+    left: 10.7%;
+  }
+  .edit-confirm .close,
+  .delete-confirm .close {
+    top: 3.5%;
+    left: 95.7%;
+  }
+  .edit-confirm .overlay-buttons, .delete-confirm .overlay-buttons {
+    top: 85%;
+    left: 0%;
+  }
+  .edit-confirm .overlay-buttons .yes, .delete-confirm .overlay-buttons .yes {
+    width: 11%;
+    position: absolute;
+    left: 22.5%;
+    top: 30%;
+  }
+  .edit-confirm .overlay-buttons .yes:hover, .delete-confirm .overlay-buttons .yes:hover {
+    background-color: #2c53c7;
+    color: #f3f4fa;
+  }
+  .edit-confirm .overlay-buttons .no, .delete-confirm .overlay-buttons .no {
+    width: 11%;
+    position: absolute;
+    right: 22.5%;
+    top: 30%;
+  }
+  .edit-confirm .overlay-buttons .no:hover, .delete-confirm .overlay-buttons .no:hover {
+    background-color: #2c53c7;
+    color: #f3f4fa;
+  }
+  .bottom-section {
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    grid-area: bottom;
+    z-index: 5;
+  }
 }
-
-.edit, .delete, .confirm {
-  display: none;
-}
-
-/* Add Product State */
-/* .product-details, .edit-product, .edit-confirm, .delete-confirm {
-    display: none;
-}
-.edit, .delete, .add {
-    display: none;
-} */
-/* Details State */
-/* .add-product, .edit-product, .edit-confirm, .delete-confirm {
-    display: none;
-}
-.add, .confirm {
-    display: none;
-} */
-/* Delete Confirm Product State */
-/* .edit-confirm {
-    display: none;
-} */
-/* Edit Product State */
-/* .product-details, .add-product, .edit-confirm, .delete-confirm {
-    display: none;
-}
-.edit, .delete, .add {
-    display: none;
-} */
-/* Edit Confirm Product State */
-/* .delete-confirm {
-    display: none;
-} */
 /*# sourceMappingURL=dashboard.css.map */
