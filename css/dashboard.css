@@ -55,24 +55,6 @@
   opacity: 0.6;
 }
 
-::-webkit-scrollbar {
-  width: 15px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f3f4fa;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3a8ec7;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #1b378c;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -490,7 +472,7 @@ h1 {
 }
 
 /* Media Query for Desktop */
-@media only screen and (min-width: 1366px) {
+@media only screen and (min-width: 1280px) {
   body {
     display: -ms-grid;
     display: grid;
@@ -501,6 +483,20 @@ h1 {
         grid-template-rows: 15% 1fr 10%;
     grid-gap: 23px;
     overflow: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f3f4fa;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3a8ec7;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b378c;
   }
   .logo {
     display: none;
@@ -553,6 +549,9 @@ h1 {
         -ms-flex-direction: row;
             flex-direction: row;
     margin: auto;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -569,7 +568,6 @@ h1 {
     color: #252525;
     border: 3px solid #2c53c7;
     cursor: pointer;
-    margin-left: 17.5%;
   }
   #add-desktop:hover {
     background-color: #2c53c7;
@@ -586,8 +584,8 @@ h1 {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    width: 200px;
-    margin-left: 17.5%;
+    width: 15%;
+    margin-right: 2.5%;
   }
   .top-right-icons .tr-icon {
     cursor: pointer;

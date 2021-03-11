@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, base-scale=1.0">
     <meta name="description" content="Dashboard for managing the store's inventory">
     <title>Onyx Systems</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
     <!-- Sidebar Navigation for Desktop -->
     <nav>
         <div class="sidebar">
-            <img src="images/logo.svg" alt="Logo" style="width: 90px;" class="sidebar-logo">
+            <img src="../images/logo.svg" alt="Logo" style="width: 90px;" class="sidebar-logo">
             <div class="nav-icons">
-                <img src="icons/dashboard.svg" alt="" class="sidebar-icon">
-                <img src="icons/contacts.svg" alt="" class="sidebar-icon">
-                <img src="icons/inbox.svg" alt="" class="sidebar-icon">
-                <img src="icons/graph.svg" alt="" class="sidebar-icon">
-                <img src="icons/settings.svg" alt="" class="sidebar-icon">                    
-                <img src="icons/logout.svg" alt="" class="sidebar-icon"> 
+                <img src="../icons/dashboard.svg" alt="" class="sidebar-icon">
+                <img src="../icons/contacts.svg" alt="" class="sidebar-icon">
+                <img src="../icons/inbox.svg" alt="" class="sidebar-icon">
+                <img src="../icons/graph.svg" alt="" class="sidebar-icon">
+                <img src="../icons/settings.svg" alt="" class="sidebar-icon">                    
+                <img src="../icons/logout.svg" alt="" class="sidebar-icon"> 
             </div>              
         </div>
     </nav>
@@ -32,16 +32,16 @@
         <div class="search-container">
             <div class="search-bar">
                 <input type="text" placeholder="Search.." class="search">
-                    <img src="icons/search.svg" alt="Search Icon" class="search-icon">
+                    <img src="../icons/search.svg" alt="Search Icon" class="search-icon">
             </div>
         </div>
         <!-- Button at the top to show the Add Product Form for Desktop -->
         <button class="add" id="add-desktop" onclick="viewAdd()">+ Add Product</button>
         <!-- Top Right Icons -->
         <div class="top-right-icons">
-            <img src="icons/bell.svg" alt="" class="tr-icon">
-            <img src="icons/message.svg" alt="" class="tr-icon">
-            <img src="icons/user.svg" alt="" class="tr-icon">                  
+            <img src="../icons/bell.svg" alt="" class="tr-icon">
+            <img src="../icons/message.svg" alt="" class="tr-icon">
+            <img src="../icons/user.svg" alt="" class="tr-icon">                  
         </div> 
     </section>
     <!-- Fixed Buttons on the Bottom *before the middle section so that the buttons show on top of the middle section on desktop-->
@@ -64,7 +64,7 @@
     <section class="middle-section">
         <!-- Edit Confirmation Overlay -->
         <div class="edit-confirm" id="edit-confirm">
-            <img class="close" src="icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
+            <img class="close" src="../icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
             <h3 class="name">HP Pavilion G4</h3>
             <p class="sure">Are you sure you wanna edit this product ?</p>
             <!-- Buttons for Confirmation -->
@@ -75,7 +75,7 @@
         </div>
         <!-- Delete Confirmation Overlay -->
         <div class="delete-confirm" id="delete-confirm">
-            <img class="close" src="icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
+            <img class="close" src="../icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
             <h3 class="name">HP Pavilion G4</h3>
             <p class="sure">Are you sure you wanna delete this product ?</p>
         <!-- Buttons for Confirmation -->
@@ -87,7 +87,7 @@
         <!-- Add Product Form -->
         <div class="add-product" id="add-product">
             <!-- Icons at the top left -->
-            <img class="return" src="icons/return.svg" alt="Return to Previous Page" onclick="closeAdd()">
+            <img class="return" src="../icons/return.svg" alt="Return to Previous Page" onclick="closeAdd()">
             <!-- Icons at the top left -->
             <form action="" class="add-form">
                 <input type="text" name="name" placeholder="Name">
@@ -101,10 +101,10 @@
         <!-- Product Details -->
         <div class="product-details" id="product-details">
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="details">
-                <img class="compress" src="icons/compress.svg" alt="Compress to Hide Product Details" onclick="closeDetails()">
+                <img class="compress" src="../icons/compress.svg" alt="Compress to Hide Product Details" onclick="closeDetails()">
                 <h3 class="name">HP Pavilion G4</h3>
                 <p class="brand">HP (Hewlett-Packard)</p>
                 <p class="spec">Microprocessor :</p>
@@ -114,16 +114,16 @@
                 <p class="spec">Video Graphics :</p>
                 <p class="part">AMD Radeon HD 6480G Discrete-Class Graphics</p>
                 <p class="spec">Hard Drive :</p>
-                <p class="part">320GB (5400RPM)</p>
+                <p class="part">320<span>GB</span></p>
             </div>
         </div>
         <!-- Edit Product Form -->
         <div class="edit-product" id="edit-product">
             <!-- Icons at the top left -->
-            <img class="return" src="icons/return.svg" alt="Return to Previous Page" onclick="closeEdit()">
+            <img class="return" src="../icons/return.svg" alt="Return to Previous Page" onclick="closeEdit()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base-edit">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -144,7 +144,7 @@
                 
                 
                     <label for="hard-drive">Hard Drive :</label>
-                    <input type="text" name="hard-drive" placeholder="320GB (5400RPM)">
+                    <input type="text" name="hard-drive" placeholder="320GB">
                 
             </form>
         </div>
@@ -152,10 +152,10 @@
         <div class="all-products" id="all-products">
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -164,10 +164,10 @@
         </div>
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -176,10 +176,10 @@
         </div>
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -188,10 +188,10 @@
         </div>
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -200,10 +200,10 @@
         </div>
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -212,10 +212,10 @@
         </div>
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -224,10 +224,10 @@
         </div>
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -236,10 +236,10 @@
         </div>
         <div class="product">
             <!-- Icons at the top left -->
-            <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
+            <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details" onclick="viewDetails()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base">
                 <h3 class="name">HP Pavilion G4</h3>
@@ -250,6 +250,6 @@
     </div>
     </section>
     <!-- Javascript File -->
-    <script src="javascript/dashboard.js"></script>
+    <script src="../javascript/dashboard.js"></script>
 </body>
 </html>

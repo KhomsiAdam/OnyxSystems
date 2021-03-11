@@ -50,22 +50,6 @@ $regular: 400;
     opacity: 0.6;
 }
 
-// Custom Scroll Bar
-::-webkit-scrollbar {
-    width: 15px;
-}
-::-webkit-scrollbar-track {
-    background: $white;
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb {
-    background: $light-blue;
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: $dark-blue; 
-}
-
 // Resets
 * {
     margin: 0;
@@ -428,7 +412,7 @@ h1 {
     }
 }
 /* Media Query for Desktop */
-@media only screen and (min-width: 1366px) {
+@media only screen and (min-width: 1280px) {
     // Modifying the grid for Desktop : 2 column (sidebar on left, everything else on right) and 3 rows (for each section)
     body {
         display: grid;
@@ -440,6 +424,21 @@ h1 {
         grid-template-rows: 15% 1fr 10%;
         grid-gap: 23px;
         overflow: hidden;
+    }
+    // Custom Scroll Bar
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
+    ::-webkit-scrollbar-track {
+        background: $white;
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $light-blue;
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: $dark-blue; 
     }
     // Hiding the desktop text logo
     .logo {
@@ -480,7 +479,7 @@ h1 {
         display: flex;
         flex-direction: row;
         margin: auto;
-        //justify-content: space-between;
+        justify-content: space-between;
         align-items: center;
         padding-bottom: 0;
         .search-container {
@@ -496,7 +495,6 @@ h1 {
         color: $black;
         border: 3px solid $blue;
         cursor: pointer;
-        margin-left: 17.5%;
     }
     #add-desktop:hover {
         background-color: $blue;
@@ -511,8 +509,8 @@ h1 {
     .top-right-icons {
         display: flex;
         justify-content: space-between;
-        width: 200px;
-        margin-left: 17.5%;
+        width: 15%;
+        margin-right: 2.5%;
         .tr-icon {
             cursor: pointer;
         }

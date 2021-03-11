@@ -45,7 +45,7 @@ function closeDetails() {
     allProducts.style.display = "block";
     addButtonDesk.classList.remove("disabled");
 }
-// Edit Product
+// Edit Product Form
 function viewEdit() {
     editProduct.style.display = "block";
     viewButtons.style.display = "none";
@@ -54,20 +54,32 @@ function viewEdit() {
     addButtonDesk.classList.add("disabled");
     allProducts.style.display = "none";
 }
+// Cancel the Edit
+function closeEdit() {
+    editProduct.style.display = "none";
+    confirmEditButton.style.display = "none";
+    productDetails.style.display = "block";
+    viewButtons.style.display = "flex";
+    allProducts.style.display = "block";
+}
+// Edit Product Confirm Overlay
 function confirmEdit() {
     editConfirm.style.display = "block";
     overEditButtons.style.display = "flex";
 }
+// Delete Product Confirm Overlay
 function confirmDelete() {
     deleteConfirm.style.display = "block";
     overDeleteButtons.style.display = "flex";
 }
+// Close Edit and Delete Overlay
 function closeOverlay() {
     editConfirm.style.display = "none";
     deleteConfirm.style.display = "none";
     overEditButtons.style.display = "none";
     overDeleteButtons.style.display = "none";
 }
+// Confirm the Edit in the Overlay
 function closeEditOverlay() {
     editConfirm.style.display = "none";
     deleteConfirm.style.display = "none";
@@ -82,6 +94,7 @@ function closeEditOverlay() {
     addButtonDesk.classList.remove("disabled");
     allProducts.style.display = "block";
 }
+// Confirm the Delete in the Overlay
 function closeDeleteOverlay() {
     editConfirm.style.display = "none";
     deleteConfirm.style.display = "none";
@@ -92,12 +105,5 @@ function closeDeleteOverlay() {
     addButton.style.display = "block";
     addButtonDesk.disabled = false;
     addButtonDesk.classList.remove("disabled");
-    allProducts.style.display = "block";
-}
-function closeEdit() {
-    editProduct.style.display = "none";
-    confirmEditButton.style.display = "none";
-    productDetails.style.display = "block";
-    viewButtons.style.display = "flex";
     allProducts.style.display = "block";
 }

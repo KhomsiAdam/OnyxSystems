@@ -23,12 +23,16 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-top: 78px;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .title {
   width: 100%;
-  text-align: center;
 }
 
 h2 {
@@ -36,6 +40,7 @@ h2 {
   color: #f3f4fa;
   font-size: 46px;
   font-weight: 400;
+  text-align: center;
 }
 
 input {
@@ -70,13 +75,16 @@ input::placeholder {
 
 .error-div {
   width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 62%;
 }
 
 .error {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   color: #c73a3a;
-  font-family: "Ubuntu";
+  font-family: 'Ubuntu';
 }
 
 button {
@@ -117,10 +125,7 @@ input:-internal-autofill-selected {
   background: #c73a3a !important;
 }
 
-@media screen and (min-width: 1366px) {
-  #form {
-    padding-top: 208px;
-  }
+@media screen and (min-width: 1280px) {
   h2 {
     margin: 0 auto 126px auto;
   }
