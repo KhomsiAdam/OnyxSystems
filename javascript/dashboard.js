@@ -107,3 +107,131 @@ function closeDeleteOverlay() {
     addButtonDesk.classList.remove("disabled");
     allProducts.style.display = "block";
 }
+//brilliant Code 
+//name
+let name_print = document.querySelector("#name");
+name_print.addEventListener('input', () => {
+    
+    let regex = /[a-zA-Z]/;
+
+    if (regex.test(name_print.value)) {
+            name_print.style.border="2px solid green";
+    }
+    else {
+        name_print.style.border="none";
+}
+});
+//brand
+let brand_print = document.querySelector("#brand");
+brand_print.addEventListener('input', () => {
+    
+    let regex = /[a-zA-Z]/;
+
+    if (regex.test(brand_print.value)) {
+            brand_print.style.border="2px solid green";     
+    }
+    else {
+        brand_print.style.border="none";
+}
+});
+//microprocessor
+let microprocessor = document.querySelector("#microprocessor");
+microprocessor.addEventListener('input', () => {
+    
+    let regex = /^([\d.\dGHz]+\s[A-Z]+\s[A-z-]+-[A-z]+)/gi;
+
+    if (regex.test(microprocessor.value)) {
+        microprocessor.style.border="2px solid green"; 
+    }
+    else {
+        microprocessor.style.border="none";
+}
+});
+//memory
+let memory = document.querySelector("#memory");
+memory.addEventListener('input', () => {
+    
+    let regex = /^[\d]{1,2}[GB]+/g;
+
+    if (regex.test(memory.value)) {
+        memory.style.border="2px solid green";
+    }
+    else {
+        memory.style.border="none";
+}
+});
+//video card 
+let video_card = document.querySelector("#video-card");
+video_card.addEventListener('input', () => {
+    
+    let regex =/^[A-z]+\s[A-z]+\s[\d]+/g
+    if (regex.test(video_card.value)) {
+        video_card.style.border="2px solid green";
+    }
+    else {
+        video_card.style.border="none";
+}
+});
+let drive = document.querySelector("#drive");
+drive.addEventListener('input', () => {
+    
+    let regex =  /^[\d]{3,4}GB$/ig;//ig;
+
+    if (regex.test(drive.value)) {
+        drive.style.border="2px solid green";
+        // alert("hi");
+    }
+    else {
+        drive.style.border="2px solid red";
+}
+});
+//Edit part
+let microprocessor_edit = document.querySelector("#micro-edit");
+microprocessor_edit.addEventListener('input', () => {
+    
+    let regex = /^([\d.\dGHz]+\s[A-Z]+\s[A-z-]+-[A-z]+)/gi;
+
+    if (regex.test(microprocessor_edit.value)) {
+        microprocessor_edit.style.border="2px solid green";
+    }
+    else {
+        microprocessor_edit.style.border="none";
+}
+});
+
+let memory_edit = document.querySelector("#memory-edit");
+memory_edit.addEventListener('input', () => {
+    
+    let regex = /^[\d]{1,2}[GB]+/g;
+
+    if (regex.test(memory_edit.value)) {
+        memory_edit.style.border="2px solid green";
+        // alert("hi");
+    }
+    else {
+        memory_edit.style.border="none";
+}
+});
+let video_card_edit = document.querySelector("#graphique-edit");
+video_card_edit.addEventListener('input', () => {
+    
+    let regex =/^[A-z]+\s[A-z]+\s[\d]+/g
+    if (regex.test(video_card_edit.value)) {
+        video_card_edit.style.border="2px solid green";
+    }
+    else {
+        video_card_edit.style.border="none";
+}
+});
+let drive_edit = document.querySelector("#drive-edit");
+drive_edit.addEventListener('input', () => {
+    
+    let regex = /^[\d]{3,4}GB$/ig;
+
+    if (regex.test(drive_edit.value)) {
+        drive_edit.style.border="2px solid green";
+    }
+    else {
+        drive_edit.style.border="none";
+}
+});
