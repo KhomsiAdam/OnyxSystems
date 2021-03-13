@@ -52,7 +52,7 @@
             <!-- Button to show the Add Product Form for Mobile -->
             <button class="add" id="add" onclick="viewAdd()">+ Add Product</button>
             <!-- Button to confirm the Add product Form -->
-            <button class="confirm" id="confirm-add" onclick="closeAdd()">Confirm</button>
+            <button type="submit" class="confirm" id="confirm-add" form="add-form" onclick="closeAdd()">Confirm</button>
             <!-- Button to confirm the Edit Form -->
             <button class="confirm" id="confirm-edit" onclick="confirmEdit()">Confirm</button>
             <!-- Buttons for Product Details -->
@@ -71,7 +71,7 @@
             <p class="sure">Are you sure you wanna edit this product ?</p>
             <!-- Buttons for Confirmation -->
             <div class="overlay-buttons" id="overlay-edit-buttons">
-                <button class="yes" onclick="closeEditOverlay()">Yes</button>
+                <button type="submit" form="edit-form" id="yes-edit" class="yes" onclick="closeEditOverlay()">Yes</button>
                 <button class="no" onclick="closeOverlay()">No</button>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <!-- Icons at the top left -->
             <img class="return" src="../icons/return.svg" alt="Return to Previous Page" onclick="closeAdd()">
             <!-- Icons at the top left -->
-            <form action="" class="add-form">
+            <form action="" class="add-form" id="add-form" method="GET">
                 <input type="text" id="name" name="name" placeholder="Name">
                 <input type="text" name="brand" id="brand" placeholder="Brand">
                 <input type="text" id="microprocessor" name="microprocessor" placeholder="Microprocessor">
@@ -111,13 +111,13 @@
                 <h3 class="name">HP Pavilion G4</h3>
                 <p class="brand">HP (Hewlett-Packard)</p>
                 <p class="spec">Microprocessor :</p>
-                <p class="part">2.5GHz/1.9GHz AMD Dual-Core<br>A4-3300M Accelerated<br>Processor</p>
+                <p class="part">2.5GHz AMD Dual-Core</p>
                 <p class="spec">Memory :</p>
-                <p class="part">4GB DDR3 SDRAM(1 DIMM)</p>
+                <p class="part">4GB</p>
                 <p class="spec">Video Graphics :</p>
-                <p class="part">AMD Radeon HD 6480G Discrete-Class Graphics</p>
+                <p class="part">AMD Radeon 6480G</p>
                 <p class="spec">Hard Drive :</p>
-                <p class="part">320<span>GB</span></p>
+                <p class="part">320GB</p>
             </div>
         </div>
         <!-- Edit Product Form -->
@@ -132,19 +132,19 @@
                 <h3 class="name">HP Pavilion G4</h3>
                 <p class="brand">HP (Hewlett-Packard)</p>
             </div>
-            <form action="" class="edit-form">
+            <form action="" class="edit-form" id="edit-form" method="GET">
 
                 <label for="microprocessor">Microprocessor :</label>
                 <input type="text" id="micro-edit" name="microprocessor"
-                    placeholder="2.5GHz/1.9GHz AMD Dual-Core A4-3300M Accelerated Processor">
+                    placeholder="2.5GHz AMD Dual-Core">
 
 
                 <label for="memory" >Memory :</label>
-                <input type="text" id="memory-edit" name="memory" placeholder="4GB DDR3 SDRAM(1 DIMM)">
+                <input type="text" id="memory-edit" name="memory" placeholder="4GB">
 
 
                 <label for="video-graphics">Video Graphics :</label>
-                <input type="text"id="graphique-edit" name="video-graphics" placeholder="AMD Radeon HD 6480G Discrete-Class Graphics">
+                <input type="text"id="graphique-edit" name="video-graphics" placeholder="AMD Radeon 6480G">
 
 
                 <label for="hard-drive">Hard Drive :</label>
