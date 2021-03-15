@@ -287,8 +287,20 @@ h1 {
 
 .add-product .add-form {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   left: 8%;
   top: 15%;
+  height: 75%;
+  width: 93%;
 }
 
 .add-product .return {
@@ -300,8 +312,7 @@ h1 {
 }
 
 .add-product input {
-  margin: 26px auto 0 auto;
-  width: 90%;
+  width: 84%;
 }
 
 .edit-product {
@@ -333,7 +344,7 @@ h1 {
   right: 0;
   left: 10%;
   width: 70%;
-  top: 3%;
+  top: 3.1%;
 }
 
 .edit-product .base-edit .name {
@@ -361,6 +372,13 @@ h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  /* left: 8%;
+        top: 15%; */
+  height: 75%;
+  width: 85%;
 }
 
 .edit-product .edit-form .edit-element {
@@ -368,7 +386,6 @@ h1 {
 }
 
 .edit-product input {
-  margin: 15px auto 26px auto;
   width: 75vw;
 }
 
@@ -471,6 +488,101 @@ h1 {
   color: #252525;
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.tooltip {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* top: 9%;
+    right: 7%; */
+}
+
+.tooltip .tooltip-info {
+  visibility: hidden;
+  width: 84%;
+  background-color: #57A55D;
+  color: #f3f4fa;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 5;
+  bottom: -38%;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.tooltip #tooltip-name, .tooltip #tooltip-brand, .tooltip #tooltip-cpu, .tooltip #tooltip-ram, .tooltip #tooltip-gpu, .tooltip #tooltip-hdd {
+  width: 83%;
+}
+
+.tooltip #tooltip-name {
+  bottom: -40%;
+}
+
+.tooltip #tooltip-brand {
+  bottom: -60%;
+}
+
+.tooltip #tooltip-cpu {
+  bottom: -60%;
+}
+
+.tooltip #tooltip-ram {
+  bottom: -18%;
+}
+
+.tooltip #tooltip-gpu {
+  bottom: -40%;
+}
+
+.tooltip #tooltip-hdd {
+  bottom: -18%;
+}
+
+.tooltip #tooltip-cpu-edit, .tooltip #tooltip-ram-edit, .tooltip #tooltip-gpu-edit, .tooltip #tooltip-hdd-edit {
+  width: 85%;
+}
+
+.tooltip #tooltip-cpu-edit {
+  bottom: -85%;
+}
+
+.tooltip #tooltip-ram-edit {
+  bottom: -18%;
+}
+
+.tooltip #tooltip-gpu-edit {
+  bottom: -40%;
+}
+
+.tooltip #tooltip-hdd-edit {
+  bottom: -18%;
+}
+
+.tooltip .info-icon {
+  cursor: pointer;
+}
+
+.tooltip .info-icon #info-icon-name, .tooltip .info-icon #info-icon-brand, .tooltip .info-icon #info-icon-cpu, .tooltip .info-icon #info-icon-ram, .tooltip .info-icon #info-icon-gpu, .tooltip .info-icon #info-icon-hdd {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.tooltip .info-icon #info-icon-name-edit, .tooltip .info-icon #info-icon-brand-edit, .tooltip .info-icon #info-icon-cpu-edit, .tooltip .info-icon #info-icon-ram-edit, .tooltip .info-icon #info-icon-gpu-edit, .tooltip .info-icon #info-icon-hdd-edit {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 /* Media Query for Desktop */
 @media only screen and (min-width: 1280px) {
   body {
@@ -568,14 +680,14 @@ h1 {
     color: #252525;
     border: 3px solid #2c53c7;
     cursor: pointer;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   #add-desktop:hover {
     background-color: #2c53c7;
     color: #f3f4fa;
-  }
-  .disabled {
-    pointer-events: none;
-    opacity: 0.3;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .top-right-icons {
     display: -webkit-box;
@@ -611,13 +723,15 @@ h1 {
     height: 75%;
     left: 10.8%;
   }
+  .add-product .add-form {
+    height: 61%;
+  }
   .add-product .return {
     left: 95.7%;
     top: 5%;
   }
   .add-product input {
-    margin: 35px auto 0 auto;
-    width: 70vw;
+    width: 69vw;
   }
   #view-buttons {
     width: 83.66%;
@@ -635,10 +749,14 @@ h1 {
     position: absolute;
     left: 25%;
     top: 30%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   #view-buttons .edit:hover {
     background-color: #2c53c7;
     color: #f3f4fa;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   #view-buttons .delete {
     width: 10%;
@@ -648,10 +766,14 @@ h1 {
     position: absolute;
     right: 25%;
     top: 30%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   #view-buttons .delete:hover {
     background-color: #c73a3a;
     color: #f3f4fa;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   #add {
     visibility: hidden;
@@ -670,10 +792,14 @@ h1 {
     position: fixed;
     left: 42%;
     top: 80%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .confirm:hover {
     background-color: #2c53c7;
     color: #f3f4fa;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .product .expand {
     left: 96%;
@@ -695,8 +821,14 @@ h1 {
     height: 75%;
     left: 10.8%;
   }
+  .edit-product .base-edit {
+    top: 2.1%;
+  }
+  .edit-product .edit-form {
+    height: 56%;
+  }
   .edit-product input {
-    width: 70vw;
+    width: 69vw;
   }
   .edit-product .return {
     left: 95.7%;
@@ -722,26 +854,58 @@ h1 {
     position: absolute;
     left: 22.5%;
     top: 30%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .edit-confirm .overlay-buttons .yes:hover, .delete-confirm .overlay-buttons .yes:hover {
     background-color: #2c53c7;
     color: #f3f4fa;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .edit-confirm .overlay-buttons .no, .delete-confirm .overlay-buttons .no {
     width: 11%;
     position: absolute;
     right: 22.5%;
     top: 30%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .edit-confirm .overlay-buttons .no:hover, .delete-confirm .overlay-buttons .no:hover {
     background-color: #2c53c7;
     color: #f3f4fa;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .bottom-section {
     -ms-grid-row: 3;
     -ms-grid-column: 2;
     grid-area: bottom;
     z-index: 5;
+  }
+  .tooltip #tooltip-name, .tooltip #tooltip-brand, .tooltip #tooltip-cpu, .tooltip #tooltip-ram, .tooltip #tooltip-gpu, .tooltip #tooltip-hdd {
+    z-index: 5;
+    bottom: -5%;
+    padding: 13px 0;
+    width: 88.8%;
+  }
+  .tooltip #tooltip-cpu-edit, .tooltip #tooltip-ram-edit, .tooltip #tooltip-gpu-edit, .tooltip #tooltip-hdd-edit {
+    z-index: 5;
+    bottom: -5%;
+    padding: 13px 0;
+    width: 96%;
+  }
+  .tooltip .info-icon {
+    padding-left: 2%;
+    cursor: pointer;
+  }
+  .tooltip .info-icon #info-icon-name, .tooltip .info-icon #info-icon-brand, .tooltip .info-icon #info-icon-cpu, .tooltip .info-icon #info-icon-ram, .tooltip .info-icon #info-icon-gpu, .tooltip .info-icon #info-icon-hdd {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .tooltip .info-icon #info-icon-name-edit, .tooltip .info-icon #info-icon-brand-edit, .tooltip .info-icon #info-icon-cpu-edit, .tooltip .info-icon #info-icon-ram-edit, .tooltip .info-icon #info-icon-gpu-edit, .tooltip .info-icon #info-icon-hdd-edit {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
 }
 /*# sourceMappingURL=dashboard.css.map */

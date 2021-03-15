@@ -10,6 +10,7 @@ $gray: #d0d3de;
 $white: #f3f4fa;
 $black: #252525;
 $red: #c73a3a;
+$green: #57A55D;
 // Font Weight Regular = 400
 $regular: 400;
 // Button Style
@@ -250,8 +251,13 @@ h1 {
     left: 5%;
     .add-form {
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         left: 8%;
         top: 15%;
+        height: 75%;
+        width: 93%;
     }
     .return {
         position: absolute;
@@ -262,8 +268,8 @@ h1 {
     }
     input {
         @extend %input;
-        margin: 26px auto 0 auto;
-        width: 90%;
+        //margin: 26px auto 0 auto;
+        width: 84%;
     }
 }
 // Edit Product Page
@@ -290,7 +296,7 @@ h1 {
         right: 0;
         left: 10%;
         width: 70%;
-        top: 3%;
+        top: 3.1%;
         .name {
             font-size: 26px;
             font-weight: $regular;
@@ -310,13 +316,17 @@ h1 {
         top: 20%;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        /* left: 8%;
+        top: 15%; */
+        height: 75%;
+        width: 85%;
         .edit-element {
             width: auto;
         }
     }
     input {
         @extend %input;
-        margin: 15px auto 26px auto;
         width: 75vw;
     }
 }
@@ -411,6 +421,78 @@ h1 {
         color: $black;
     }
 }
+// "Disabled" class to add with JS to disable interaction with the desktop add button
+.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+.tooltip {
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* top: 9%;
+    right: 7%; */
+    .tooltip-info {
+        visibility: hidden;
+        width: 84%;
+        background-color: #57A55D;
+        color: $white;
+        text-align: center;
+        padding: 10px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 5;
+        bottom: -38%;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    #tooltip-name, #tooltip-brand, #tooltip-cpu, #tooltip-ram, #tooltip-gpu, #tooltip-hdd {
+        width: 83%;
+    }
+    #tooltip-name {
+        bottom: -40%;
+    }
+    #tooltip-brand {
+        bottom: -60%;
+    }
+    #tooltip-cpu {
+        bottom: -60%;
+    }
+    #tooltip-ram {
+        bottom: -18%;
+    }
+    #tooltip-gpu {
+        bottom: -40%;
+    }
+    #tooltip-hdd {
+        bottom: -18%;
+    }
+    #tooltip-cpu-edit, #tooltip-ram-edit, #tooltip-gpu-edit, #tooltip-hdd-edit {
+        width: 85%;
+    }
+    #tooltip-cpu-edit {
+        bottom: -85%;
+    }
+    #tooltip-ram-edit {
+        bottom: -18%;
+    }
+    #tooltip-gpu-edit {
+        bottom: -40%;
+    }
+    #tooltip-hdd-edit {
+        bottom: -18%;
+    }
+    .info-icon {
+        //padding-left: 2%;
+        cursor: pointer;
+        #info-icon-name, #info-icon-brand, #info-icon-cpu, #info-icon-ram, #info-icon-gpu, #info-icon-hdd {
+            transition: 0.5s;
+        }
+        #info-icon-name-edit, #info-icon-brand-edit, #info-icon-cpu-edit, #info-icon-ram-edit, #info-icon-gpu-edit, #info-icon-hdd-edit {
+            transition: 0.5s;
+        }
+    }
+}
 /* Media Query for Desktop */
 @media only screen and (min-width: 1280px) {
     // Modifying the grid for Desktop : 2 column (sidebar on left, everything else on right) and 3 rows (for each section)
@@ -438,7 +520,7 @@ h1 {
         border-radius: 5px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: $dark-blue; 
+        background: $dark-blue;
     }
     // Hiding the desktop text logo
     .logo {
@@ -495,16 +577,13 @@ h1 {
         color: $black;
         border: 3px solid $blue;
         cursor: pointer;
+        transition: 0.5s;
     }
     #add-desktop:hover {
         background-color: $blue;
         color: $white;
+        transition: 0.5s;
     }
-    // "Disabled" class to add with JS to disable interaction with the desktop add button
-    .disabled {
-        pointer-events: none;
-        opacity: 0.3;
-      }
     // Icons at the top right for desktop
     .top-right-icons {
         display: flex;
@@ -536,13 +615,16 @@ h1 {
         width: 83.66%;
         height: 75%;
         left: 10.8%;
+        .add-form {
+            height: 61%;
+        }
         .return {
             left: 95.7%;
             top: 5%;
         }
         input {
-            margin: 35px auto 0 auto;
-            width: 70vw;
+            //margin: 35px auto 0 auto;
+            width: 69vw;
         }
     }
 
@@ -562,10 +644,12 @@ h1 {
         position: absolute;
         left: 25%;
         top: 30%;
+        transition: 0.5s;
     }
     .edit:hover {
         background-color: $blue;
         color: $white;
+        transition: 0.5s;
     }
     .delete {
         width: 10%;
@@ -575,10 +659,12 @@ h1 {
         position: absolute;
         right: 25%;
         top: 30%;
+        transition: 0.5s;
     }
     .delete:hover {
         background-color: $red;
         color: $white;
+        transition: 0.5s;
     }
 }
     // Hiding the Mobile Add Buttons
@@ -600,10 +686,12 @@ h1 {
         position: fixed;
         left: 42%;
         top: 80%;
+        transition: 0.5s;
     }
     .confirm:hover {
         background-color: $blue;
-        color: $white
+        color: $white;
+        transition: 0.5s;
     }
     // Product Element
     .product {
@@ -629,8 +717,14 @@ h1 {
         width: 83.66%;
         height: 75%;
         left: 10.8%;
+        .base-edit {
+            top: 2.1%;
+        }
+        .edit-form {
+            height: 56%;
+        }
         input {
-            width: 70vw;
+            width: 69vw;
         }
         .return {
             left: 95.7%;
@@ -654,20 +748,24 @@ h1 {
                 position: absolute;
                 left: 22.5%;
                 top: 30%;
+                transition: 0.5s;
             }
             .yes:hover {
                 background-color: $blue;
                 color: $white;
+                transition: 0.5s;
             }
             .no {
                 width: 11%;
                 position: absolute;
                 right: 22.5%;
                 top: 30%;
+                transition: 0.5s;
             }
             .no:hover {
                 background-color: $blue;
                 color: $white;
+                transition: 0.5s;
             }
         }
         
@@ -677,4 +775,28 @@ h1 {
         grid-area: bottom;
         z-index: 5;
     }
+    .tooltip {
+        #tooltip-name, #tooltip-brand, #tooltip-cpu, #tooltip-ram, #tooltip-gpu, #tooltip-hdd {
+            z-index: 5;
+            bottom: -5%;
+            padding: 13px 0;
+            width: 88.8%;
+        }
+        #tooltip-cpu-edit, #tooltip-ram-edit, #tooltip-gpu-edit, #tooltip-hdd-edit {
+            z-index: 5;
+            bottom: -5%;
+            padding: 13px 0;
+            width: 96%;
+        }
+        .info-icon {
+            padding-left: 2%;
+            cursor: pointer;
+                #info-icon-name, #info-icon-brand, #info-icon-cpu, #info-icon-ram, #info-icon-gpu, #info-icon-hdd {
+                    transition: 0.5s;
+                }
+                #info-icon-name-edit, #info-icon-brand-edit, #info-icon-cpu-edit, #info-icon-ram-edit, #info-icon-gpu-edit, #info-icon-hdd-edit {
+                    transition: 0.5s;
+                }
+            }
+        }
 } // Desktop Media Query end

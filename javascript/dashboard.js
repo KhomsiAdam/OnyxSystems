@@ -60,7 +60,6 @@ function closeEdit() {
     confirmEditButton.style.display = "none";
     productDetails.style.display = "block";
     viewButtons.style.display = "flex";
-    allProducts.style.display = "block";
 }
 // Edit Product Confirm Overlay
 function confirmEdit() {
@@ -123,11 +122,11 @@ name_print.addEventListener('input', () => {
         name_print.style.border="none";
         nameSubmitAdd = false;
     } else if (regexName.test(name_print.value)) {
-        name_print.style.border="2px solid green";
+        name_print.style.border="2px solid #57A55D";
         nameSubmitAdd = true;
     }
     else if (!regexName.test(name_print.value)) {
-        name_print.style.border="2px solid red";
+        name_print.style.border="2px solid #c73a3a";
         nameSubmitAdd = false;
     }
 });
@@ -141,11 +140,11 @@ brand_print.addEventListener('input', () => {
         brand_print.style.border="none";
         brandSubmitAdd = false;
     } else if (regexBrand.test(brand_print.value)) {
-        brand_print.style.border="2px solid green";
-        brandSubmitAdd = true;  
+        brand_print.style.border="2px solid #57A55D";
+        brandSubmitAdd = true;     
     }
     else if (!regexBrand.test(brand_print.value)) {
-        brand_print.style.border="2px solid red";
+        brand_print.style.border="2px solid #c73a3a";
         brandSubmitAdd = false;
 }
 });
@@ -159,11 +158,11 @@ microprocessor.addEventListener('input', () => {
         microprocessor.style.border="none";
         cpuSubmitAdd = false;
     } else if (regexCpu.test(microprocessor.value)) {
-        microprocessor.style.border="2px solid green";
+        microprocessor.style.border="2px solid #57A55D";
         cpuSubmitAdd = true;
     }
     else if (!regexCpu.test(microprocessor.value))  {
-        microprocessor.style.border="2px solid red";
+        microprocessor.style.border="2px solid #c73a3a";
         cpuSubmitAdd = false;
 }
 });
@@ -177,11 +176,11 @@ memory.addEventListener('input', () => {
         memory.style.border="none";
         ramSubmitAdd = false;
     } else if (regexRam.test(memory.value)) {
-        memory.style.border="2px solid green";
+        memory.style.border="2px solid #57A55D";
         ramSubmitAdd = true;
     }
     else if (!regexRam.test(memory.value)) {
-        memory.style.border="2px solid red";
+        memory.style.border="2px solid #c73a3a";
         ramSubmitAdd = false;
 }
 });
@@ -195,11 +194,11 @@ video_card.addEventListener('input', () => {
         video_card.style.border="none";
         gpuSubmitAdd = false;
     } else if (regexGpu.test(video_card.value)) {
-        video_card.style.border="2px solid green";
+        video_card.style.border="2px solid #57A55D";
         gpuSubmitAdd = true;
     }
     else if (!regexGpu.test(video_card.value)) {
-        video_card.style.border="2px solid red";
+        video_card.style.border="2px solid #c73a3a";
         gpuSubmitAdd = false;
 }
 });
@@ -213,19 +212,18 @@ drive.addEventListener('input', () => {
         drive.style.border="none";
         hddSubmitAdd = false;
     } else if (regexHdd.test(drive.value)) {
-        drive.style.border="2px solid green";
+        drive.style.border="2px solid #57A55D";
         hddSubmitAdd = true;
     }
     else if (!regexHdd.test(drive.value)) {
-        drive.style.border="2px solid red";
+        drive.style.border="2px solid #c73a3a";
         hddSubmitAdd = false;
 }
 });
 // Submit Add Form Only if conditions above are true
 var add_form = document.getElementById('add-form');
-var add_button = document.getElementById('confirm-add');
 
-add_button.addEventListener('click', function(event) {
+confirmAddButton.addEventListener('click', function(event) {
     event.preventDefault();
     if (nameSubmitAdd === true && brandSubmitAdd === true && cpuSubmitAdd === true && ramSubmitAdd === true && gpuSubmitAdd === true && hddSubmitAdd === true) {
         add_form.submit();
@@ -243,11 +241,11 @@ microprocessor_edit.addEventListener('input', () => {
         microprocessor_edit.style.border="none";
         cpuSubmitEdit = false;
     } else if (regexCpu.test(microprocessor_edit.value)) {
-        microprocessor_edit.style.border="2px solid green";
+        microprocessor_edit.style.border="2px solid #57A55D";
         cpuSubmitEdit = true;
     }
     else if (!regexCpu.test(microprocessor_edit.value)) {
-        microprocessor_edit.style.border="2px solid red";
+        microprocessor_edit.style.border="2px solid #c73a3a";
         cpuSubmitEdit = false;
 }
 });
@@ -261,11 +259,11 @@ memory_edit.addEventListener('input', () => {
         memory_edit.style.border="none";
         ramSubmitEdit = false;
     } else if (regexRam.test(memory_edit.value)) {
-        memory_edit.style.border="2px solid green";
+        memory_edit.style.border="2px solid #57A55D";
         ramSubmitEdit = true;
     }
     else if (!regexRam.test(memory_edit.value)) {
-        memory_edit.style.border="2px solid red";
+        memory_edit.style.border="2px solid #c73a3a";
         ramSubmitEdit = false;
 }
 });
@@ -273,17 +271,17 @@ memory_edit.addEventListener('input', () => {
 let video_card_edit = document.querySelector("#graphique-edit");
 video_card_edit.addEventListener('input', () => {
     
-    let regexGpu = /^[\w]+\s[\w]+\s[\d]{4}[\w]{1,2}$/g;
+    let regexGpu = /^[\w]+\s[\w]+\s[\d]{4}$/g;
     
     if (video_card_edit.value === '') {
         video_card_edit.style.border="none";
         gpuSubmitEdit = false;
     } else if (regexGpu.test(video_card_edit.value)) {
-        video_card_edit.style.border="2px solid green";
+        video_card_edit.style.border="2px solid #57A55D";
         gpuSubmitEdit = true;
     }
     else if (!regexGpu.test(video_card_edit.value)) {
-        video_card_edit.style.border="2px solid red";
+        video_card_edit.style.border="2px solid #c73a3a";
         gpuSubmitEdit = false;
 }
 });
@@ -297,11 +295,11 @@ drive_edit.addEventListener('input', () => {
         drive_edit.style.border="none";
         hddSubmitEdit = false;
     } else if (regexHdd.test(drive_edit.value)) {
-        drive_edit.style.border="2px solid green";
+        drive_edit.style.border="2px solid #57A55D";
         hddSubmitEdit = true;
     }
     else if (!regexHdd.test(drive_edit.value)) {
-        drive_edit.style.border="2px solid red";
+        drive_edit.style.border="2px solid #c73a3a";
         hddSubmitEdit = false;
 }
 });
@@ -315,3 +313,187 @@ edit_button.addEventListener('click', function(event) {
         edit_form.submit();
     }
 })
+
+// On mouse hover over info icon show tooltip to fill the Add Product Form
+// Name
+var infoName = document.getElementById('info-name');
+var infoIconName = document.getElementById('info-icon-name');
+var tooltipName = document.getElementById('tooltip-name');
+
+infoName.addEventListener('mouseover', showTooltipName);
+infoName.addEventListener('mouseout', hideTooltipName);
+
+function showTooltipName() {
+    tooltipName.style.visibility = "visible";
+    tooltipName.style.opacity = "1";
+    infoIconName.style.fill = "#57A55D";
+}
+function hideTooltipName() {
+    tooltipName.style.visibility = "hidden";
+    tooltipName.style.opacity = "0";
+    infoIconName.style.fill = "#3a8ec7";
+}
+//Brand
+var infoBrand = document.getElementById('info-brand');
+var infoIconBrand = document.getElementById('info-icon-brand');
+var tooltipBrand = document.getElementById('tooltip-brand');
+
+infoBrand.addEventListener('mouseover', showTooltipBrand);
+infoBrand.addEventListener('mouseout', hideTooltipBrand);
+
+function showTooltipBrand() {
+    tooltipBrand.style.visibility = "visible";
+    tooltipBrand.style.opacity = "1";
+    infoIconBrand.style.fill = "#57A55D";
+}
+function hideTooltipBrand() {
+    tooltipBrand.style.visibility = "hidden";
+    tooltipBrand.style.opacity = "0";
+    infoIconBrand.style.fill = "#3a8ec7";
+}
+//Cpu
+var infoCpu = document.getElementById('info-cpu');
+var infoIconCpu = document.getElementById('info-icon-cpu');
+var tooltipCpu = document.getElementById('tooltip-cpu');
+
+infoCpu.addEventListener('mouseover', showTooltipCpu);
+infoCpu.addEventListener('mouseout', hideTooltipCpu);
+
+function showTooltipCpu() {
+    tooltipCpu.style.visibility = "visible";
+    tooltipCpu.style.opacity = "1";
+    infoIconCpu.style.fill = "#57A55D";
+}
+function hideTooltipCpu() {
+    tooltipCpu.style.visibility = "hidden";
+    tooltipCpu.style.opacity = "0";
+    infoIconCpu.style.fill = "#3a8ec7";
+}
+//Ram
+var infoRam = document.getElementById('info-ram');
+var infoIconRam = document.getElementById('info-icon-ram');
+var tooltipRam = document.getElementById('tooltip-ram');
+
+infoRam.addEventListener('mouseover', showTooltipRam);
+infoRam.addEventListener('mouseout', hideTooltipRam);
+
+function showTooltipRam() {
+    tooltipRam.style.visibility = "visible";
+    tooltipRam.style.opacity = "1";
+    infoIconRam.style.fill = "#57A55D";
+}
+function hideTooltipRam() {
+    tooltipRam.style.visibility = "hidden";
+    tooltipRam.style.opacity = "0";
+    infoIconRam.style.fill = "#3a8ec7";
+}
+//Gpu
+var infoGpu = document.getElementById('info-gpu');
+var infoIconGpu = document.getElementById('info-icon-gpu');
+var tooltipGpu = document.getElementById('tooltip-gpu');
+
+infoGpu.addEventListener('mouseover', showTooltipGpu);
+infoGpu.addEventListener('mouseout', hideTooltipGpu);
+
+function showTooltipGpu() {
+    tooltipGpu.style.visibility = "visible";
+    tooltipGpu.style.opacity = "1";
+    infoIconGpu.style.fill = "#57A55D";
+}
+function hideTooltipGpu() {
+    tooltipGpu.style.visibility = "hidden";
+    tooltipGpu.style.opacity = "0";
+    infoIconGpu.style.fill = "#3a8ec7";
+}
+//Hdd
+var infoHdd = document.getElementById('info-hdd');
+var infoIconHdd = document.getElementById('info-icon-hdd');
+var tooltipHdd = document.getElementById('tooltip-hdd');
+
+infoHdd.addEventListener('mouseover', showTooltipHdd);
+infoHdd.addEventListener('mouseout', hideTooltipHdd);
+
+function showTooltipHdd() {
+    tooltipHdd.style.visibility = "visible";
+    tooltipHdd.style.opacity = "1";
+    infoIconHdd.style.fill = "#57A55D";
+}
+function hideTooltipHdd() {
+    tooltipHdd.style.visibility = "hidden";
+    tooltipHdd.style.opacity = "0";
+    infoIconHdd.style.fill = "#3a8ec7";
+}
+
+// On mouse hover over info icon show tooltip to fill the Edit Product Form
+//Cpu
+var infoCpuEdit = document.getElementById('info-cpu-edit');
+var infoIconCpuEdit = document.getElementById('info-icon-cpu-edit');
+var tooltipCpuEdit = document.getElementById('tooltip-cpu-edit');
+
+infoCpuEdit.addEventListener('mouseover', showTooltipCpuEdit);
+infoCpuEdit.addEventListener('mouseout', hideTooltipCpuEdit);
+
+function showTooltipCpuEdit() {
+    tooltipCpuEdit.style.visibility = "visible";
+    tooltipCpuEdit.style.opacity = "1";
+    infoIconCpuEdit.style.fill = "#57A55D";
+}
+function hideTooltipCpuEdit() {
+    tooltipCpuEdit.style.visibility = "hidden";
+    tooltipCpuEdit.style.opacity = "0";
+    infoIconCpuEdit.style.fill = "#3a8ec7";
+}
+//Ram
+var infoRamEdit = document.getElementById('info-ram-edit');
+var infoIconRamEdit = document.getElementById('info-icon-ram-edit');
+var tooltipRamEdit = document.getElementById('tooltip-ram-edit');
+
+infoRamEdit.addEventListener('mouseover', showTooltipRamEdit);
+infoRamEdit.addEventListener('mouseout', hideTooltipRamEdit);
+
+function showTooltipRamEdit() {
+    tooltipRamEdit.style.visibility = "visible";
+    tooltipRamEdit.style.opacity = "1";
+    infoIconRamEdit.style.fill = "#57A55D";
+}
+function hideTooltipRamEdit() {
+    tooltipRamEdit.style.visibility = "hidden";
+    tooltipRamEdit.style.opacity = "0";
+    infoIconRamEdit.style.fill = "#3a8ec7";
+}
+//Gpu
+var infoGpuEdit = document.getElementById('info-gpu-edit');
+var infoIconGpuEdit = document.getElementById('info-icon-gpu-edit');
+var tooltipGpuEdit = document.getElementById('tooltip-gpu-edit');
+
+infoGpuEdit.addEventListener('mouseover', showTooltipGpuEdit);
+infoGpuEdit.addEventListener('mouseout', hideTooltipGpuEdit);
+
+function showTooltipGpuEdit() {
+    tooltipGpuEdit.style.visibility = "visible";
+    tooltipGpuEdit.style.opacity = "1";
+    infoIconGpuEdit.style.fill = "#57A55D";
+}
+function hideTooltipGpuEdit() {
+    tooltipGpuEdit.style.visibility = "hidden";
+    tooltipGpuEdit.style.opacity = "0";
+    infoIconGpuEdit.style.fill = "#3a8ec7";
+}
+//Hdd
+var infoHddEdit = document.getElementById('info-hdd-edit');
+var infoIconHddEdit = document.getElementById('info-icon-hdd-edit');
+var tooltipHddEdit = document.getElementById('tooltip-hdd-edit');
+
+infoHddEdit.addEventListener('mouseover', showTooltipHddEdit);
+infoHddEdit.addEventListener('mouseout', hideTooltipHddEdit);
+
+function showTooltipHddEdit() {
+    tooltipHddEdit.style.visibility = "visible";
+    tooltipHddEdit.style.opacity = "1";
+    infoIconHddEdit.style.fill = "#57A55D";
+}
+function hideTooltipHddEdit() {
+    tooltipHddEdit.style.visibility = "hidden";
+    tooltipHddEdit.style.opacity = "0";
+    infoIconHddEdit.style.fill = "#3a8ec7";
+}
