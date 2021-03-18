@@ -9,26 +9,26 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <form action="login.php" method="post" id="form">
+    <form action="" method="post" id="form">
         <div class="title">
             <h2>Onyx Systems</h2>
         </div>
         <label>
             <div class="input-username-div">
-                <input type="text" required name="uname" placeholder="Username" id="username" autocomplete="off"><br>
+                <input type="text" name="uname" placeholder="Username" id="username" autocomplete="off"><br>
             </div>
             <div class="input-password-div">
-                <input type="password" required name="password" placeholder="Password" id="password"><br>
+                <input type="password" name="password" placeholder="Password" id="password"><br>
             </div>
         </label>
         <div class="error-div">
             <!--<?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>-->
-            <p class="error">Please enter a valid Username and Password</p>
+            <p class="error" id="error">Please enter a valid Username and Password</p>
         </div>
         <div class="button-tag">
-            <button type="submit" onclick="checkempty()">LOG IN</button>
+            <button type="submit" id="login-submit" onclick="checkempty()">LOG IN</button>
         </div>
     </form>
     <script src="../javascript/index.js"></script>

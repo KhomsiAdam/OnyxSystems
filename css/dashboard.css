@@ -188,6 +188,10 @@ h1 {
   cursor: pointer;
 }
 
+.product .hidden_information {
+  display: none;
+}
+
 .lap-img-container {
   display: none;
 }
@@ -241,6 +245,10 @@ h1 {
   width: 80%;
 }
 
+.details .id {
+  display: none;
+}
+
 .details .name {
   font-size: 26px;
   font-weight: 400;
@@ -255,7 +263,7 @@ h1 {
   padding-bottom: 24px;
 }
 
-.details .part {
+.details .cpu, .details .ram, .details .gpu, .details .hdd {
   font-size: 16px;
   font-weight: 400;
   color: #3a8ec7;

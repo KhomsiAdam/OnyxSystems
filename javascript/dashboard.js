@@ -20,6 +20,31 @@ function viewAdd() {
     addButton.style.display = "none";
     allProducts.style.display = "none";
     addButtonDesk.classList.add("disabled");
+
+    document.getElementById('name').value = '';
+    name_print.style.border="none";
+    infoIconName.style.fill = "#3a8ec7";
+
+    document.getElementById('brand').value = '';
+    brand_print.style.border="none";
+    infoIconBrand.style.fill = "#3a8ec7";
+
+    document.getElementById('microprocessor').value = '';
+    microprocessor.style.border="none";
+    infoIconCpu.style.fill = "#3a8ec7";
+
+    document.getElementById('memory').value = '';
+    memory.style.border="none";
+    infoIconRam.style.fill = "#3a8ec7";
+
+    document.getElementById('video-card').value = '';
+    video_card.style.border="none";
+    infoIconGpu.style.fill = "#3a8ec7";
+
+    document.getElementById('drive').value = '';
+    drive.style.border="none";
+    infoIconHdd.style.fill = "#3a8ec7";
+
 }
 function closeAdd() {
     addProduct.style.display = "none";
@@ -28,8 +53,18 @@ function closeAdd() {
     allProducts.style.display = "block";
     addButtonDesk.classList.remove("disabled");
 }
+
+// Select all current expand buttons
+var expandButtons = document.querySelectorAll('.expand');
+// EventListener Loop to go through all the current existing expand buttons to show the unique details for each individual product depending on which expand button is pressed
+for(i=0 ; i < expandButtons.length ; i++) {
+    expandButtons[i].addEventListener('click', viewDetails);
+}
+
 // View Product Details
 function viewDetails() {
+    product=this.parentElement;
+    viewHiddenDetails(product);
     productDetails.style.display = "block";
     viewButtons.style.display = "flex";
     addButton.style.display = "none";
@@ -37,6 +72,18 @@ function viewDetails() {
     allProducts.style.display = "none";
     addButtonDesk.classList.add("disabled");
 }
+// Take hidden data from product and put it into the details popup
+function viewHiddenDetails(product) {
+    document.querySelector('.details .id').innerHTML=product.children[1].children[0].innerHTML;
+    document.querySelector('.details .name').innerHTML=product.children[1].children[1].children[0].innerHTML;
+    document.querySelector('.details .brand').innerHTML=product.children[1].children[1].children[1].innerHTML;
+    document.querySelector('.details .cpu').innerHTML=product.children[1].children[2].innerHTML;
+    document.querySelector('.details .ram').innerHTML=product.children[1].children[3].innerHTML;
+    document.querySelector('.details .gpu').innerHTML=product.children[1].children[4].innerHTML;
+    document.querySelector('.details .hdd').innerHTML=product.children[1].children[5].innerHTML;
+
+}
+
 function closeDetails() {
     productDetails.style.display = "none";
     viewButtons.style.display = "none";
@@ -47,12 +94,22 @@ function closeDetails() {
 }
 // Edit Product Form
 function viewEdit() {
+    editHiddenDetails();
     editProduct.style.display = "block";
     viewButtons.style.display = "none";
     confirmEditButton.style.display = "block";
     addButtonDesk.disabled = true;
     addButtonDesk.classList.add("disabled");
     allProducts.style.display = "none";
+}
+// Take data from details popup and put it into the input fields for the edit form
+function editHiddenDetails(){
+    document.querySelector('.base-edit .name').innerHTML=document.querySelector('.details .name').innerHTML;
+    document.querySelector('.base-edit .brand').innerHTML=document.querySelector('.details .brand').innerHTML;
+    document.getElementById('micro-edit').value=document.querySelector('.details .cpu').innerHTML;
+    document.getElementById('memory-edit').value=document.querySelector('.details .ram').innerHTML;
+    document.getElementById('graphique-edit').value=document.querySelector('.details .gpu').innerHTML;
+    document.getElementById('drive-edit').value=document.querySelector('.details .hdd').innerHTML;
 }
 // Cancel the Edit
 function closeEdit() {
@@ -110,7 +167,7 @@ function closeDeleteOverlay() {
 // Initializing the variables for submitting the Add form
 var nameSubmitAdd = false, brandSubmitAdd = false, cpuSubmitAdd = false, ramSubmitAdd = false, gpuSubmitAdd = false, hddSubmitAdd = false;
 // Initializing the variables for submitting the Edit form
-var nameSubmitEdit = false, brandSubmitEdit = false, cpuSubmitEdit = false, ramSubmitEdit = false, gpuSubmitEdit = false, hddSubmitEdit = false;
+var nameSubmitEdit = true, brandSubmitEdit = true, cpuSubmitEdit = true, ramSubmitEdit = true, gpuSubmitEdit = true, hddSubmitEdit = true;
 // Add Product Form
 //name add
 let name_print = document.querySelector("#name");
@@ -121,13 +178,16 @@ name_print.addEventListener('input', () => {
     if (name_print.value === '') {
         name_print.style.border="none";
         nameSubmitAdd = false;
+        infoIconName.style.fill = "#3a8ec7";
     } else if (regexName.test(name_print.value)) {
         name_print.style.border="2px solid #57A55D";
         nameSubmitAdd = true;
+        infoIconName.style.fill = "#57A55D";
     }
     else if (!regexName.test(name_print.value)) {
         name_print.style.border="2px solid #c73a3a";
         nameSubmitAdd = false;
+        infoIconName.style.fill = "#c73a3a";
     }
 });
 //brand add
@@ -139,13 +199,16 @@ brand_print.addEventListener('input', () => {
     if (brand_print.value === '') {
         brand_print.style.border="none";
         brandSubmitAdd = false;
+        infoIconBrand.style.fill = "#3a8ec7";
     } else if (regexBrand.test(brand_print.value)) {
         brand_print.style.border="2px solid #57A55D";
-        brandSubmitAdd = true;     
+        brandSubmitAdd = true;
+        infoIconBrand.style.fill = "#57A55D";  
     }
     else if (!regexBrand.test(brand_print.value)) {
         brand_print.style.border="2px solid #c73a3a";
         brandSubmitAdd = false;
+        infoIconBrand.style.fill = "#c73a3a";
 }
 });
 //microprocessor add
@@ -157,13 +220,16 @@ microprocessor.addEventListener('input', () => {
     if (microprocessor.value === '') {
         microprocessor.style.border="none";
         cpuSubmitAdd = false;
+        infoIconCpu.style.fill = "#3a8ec7";
     } else if (regexCpu.test(microprocessor.value)) {
         microprocessor.style.border="2px solid #57A55D";
         cpuSubmitAdd = true;
+        infoIconCpu.style.fill = "#57A55D";
     }
     else if (!regexCpu.test(microprocessor.value))  {
         microprocessor.style.border="2px solid #c73a3a";
         cpuSubmitAdd = false;
+        infoIconCpu.style.fill = "#c73a3a";
 }
 });
 //memory add
@@ -175,31 +241,37 @@ memory.addEventListener('input', () => {
     if (memory.value === '') {
         memory.style.border="none";
         ramSubmitAdd = false;
+        infoIconRam.style.fill = "#3a8ec7";
     } else if (regexRam.test(memory.value)) {
         memory.style.border="2px solid #57A55D";
         ramSubmitAdd = true;
+        infoIconRam.style.fill = "#57A55D";
     }
     else if (!regexRam.test(memory.value)) {
         memory.style.border="2px solid #c73a3a";
         ramSubmitAdd = false;
+        infoIconRam.style.fill = "#c73a3a";
 }
 });
 //video card add
 let video_card = document.querySelector("#video-card");
 video_card.addEventListener('input', () => {
     
-    let regexGpu = /^[\w]+\s[\w]+\s[\d]{4}[\w]{1,2}$/g;
+    let regexGpu = /^[\w]+\s[\w]+\s[\d]{4}$/g;
 
     if (video_card.value === '') {
         video_card.style.border="none";
         gpuSubmitAdd = false;
+        infoIconGpu.style.fill = "#3a8ec7";
     } else if (regexGpu.test(video_card.value)) {
         video_card.style.border="2px solid #57A55D";
         gpuSubmitAdd = true;
+        infoIconGpu.style.fill = "#57A55D";
     }
     else if (!regexGpu.test(video_card.value)) {
         video_card.style.border="2px solid #c73a3a";
         gpuSubmitAdd = false;
+        infoIconGpu.style.fill = "#c73a3a";
 }
 });
 //drive add
@@ -211,13 +283,16 @@ drive.addEventListener('input', () => {
     if (drive.value === '') {
         drive.style.border="none";
         hddSubmitAdd = false;
+        infoIconHdd.style.fill = "#3a8ec7";
     } else if (regexHdd.test(drive.value)) {
         drive.style.border="2px solid #57A55D";
         hddSubmitAdd = true;
+        infoIconHdd.style.fill = "#57A55D";
     }
     else if (!regexHdd.test(drive.value)) {
         drive.style.border="2px solid #c73a3a";
         hddSubmitAdd = false;
+        infoIconHdd.style.fill = "#c73a3a";
 }
 });
 // Submit Add Form Only if conditions above are true
@@ -240,13 +315,16 @@ microprocessor_edit.addEventListener('input', () => {
     if (microprocessor_edit.value === '') {
         microprocessor_edit.style.border="none";
         cpuSubmitEdit = false;
+        infoIconCpuEdit.style.fill = "#3a8ec7";
     } else if (regexCpu.test(microprocessor_edit.value)) {
         microprocessor_edit.style.border="2px solid #57A55D";
         cpuSubmitEdit = true;
+        infoIconCpuEdit.style.fill = "#57A55D";
     }
     else if (!regexCpu.test(microprocessor_edit.value)) {
         microprocessor_edit.style.border="2px solid #c73a3a";
         cpuSubmitEdit = false;
+        infoIconCpuEdit.style.fill = "#c73a3a";
 }
 });
 //memory edit
@@ -258,13 +336,16 @@ memory_edit.addEventListener('input', () => {
     if (memory_edit.value === '') {
         memory_edit.style.border="none";
         ramSubmitEdit = false;
+        infoIconRamEdit.style.fill = "#3a8ec7";
     } else if (regexRam.test(memory_edit.value)) {
         memory_edit.style.border="2px solid #57A55D";
         ramSubmitEdit = true;
+        infoIconRamEdit.style.fill = "#57A55D";
     }
     else if (!regexRam.test(memory_edit.value)) {
         memory_edit.style.border="2px solid #c73a3a";
         ramSubmitEdit = false;
+        infoIconRamEdit.style.fill = "#c73a3a";
 }
 });
 //video card edit
@@ -276,13 +357,16 @@ video_card_edit.addEventListener('input', () => {
     if (video_card_edit.value === '') {
         video_card_edit.style.border="none";
         gpuSubmitEdit = false;
+        infoIconGpuEdit.style.fill = "#3a8ec7";
     } else if (regexGpu.test(video_card_edit.value)) {
         video_card_edit.style.border="2px solid #57A55D";
         gpuSubmitEdit = true;
+        infoIconGpuEdit.style.fill = "#57A55D";
     }
     else if (!regexGpu.test(video_card_edit.value)) {
         video_card_edit.style.border="2px solid #c73a3a";
         gpuSubmitEdit = false;
+        infoIconGpuEdit.style.fill = "#c73a3a";
 }
 });
 //drive edit
@@ -294,13 +378,16 @@ drive_edit.addEventListener('input', () => {
     if (drive_edit.value === '') {
         drive_edit.style.border="none";
         hddSubmitEdit = false;
+        infoIconHddEdit.style.fill = "#3a8ec7";
     } else if (regexHdd.test(drive_edit.value)) {
         drive_edit.style.border="2px solid #57A55D";
         hddSubmitEdit = true;
+        infoIconHddEdit.style.fill = "#57A55D";
     }
     else if (!regexHdd.test(drive_edit.value)) {
         drive_edit.style.border="2px solid #c73a3a";
         hddSubmitEdit = false;
+        infoIconHddEdit.style.fill = "#c73a3a";
 }
 });
 // Submit Edit Form only if above conditions are true

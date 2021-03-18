@@ -85,6 +85,7 @@ input::placeholder {
   font-size: 14px;
   color: #c73a3a;
   font-family: 'Ubuntu';
+  display: none;
 }
 
 button {
