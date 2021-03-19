@@ -1,3 +1,14 @@
+<?php
+include 'db_conn.php';
+$sql = 'SELECT * FROM products';
+
+$result = mysqli_query($conn, $sql);
+
+$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+if (isset($_SESSION['usersId']) && isset($_SESSION['usersUsername'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,21 +18,21 @@
     <meta name="viewport" content="width=device-width, base-scale=1.0">
     <meta name="description" content="Dashboard for managing the store's inventory">
     <title>Onyx Systems</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
 <body>
     <!-- Sidebar Navigation for Desktop -->
     <nav>
         <div class="sidebar">
-            <img src="../images/logo.svg" alt="Logo" style="width: 90px;" class="sidebar-logo">
+            <img src="images/logo.svg" alt="Logo" style="width: 90px;" class="sidebar-logo">
             <div class="nav-icons">
-                <img src="../icons/dashboard.svg" alt="" class="sidebar-icon">
-                <img src="../icons/contacts.svg" alt="" class="sidebar-icon">
-                <img src="../icons/inbox.svg" alt="" class="sidebar-icon">
-                <img src="../icons/graph.svg" alt="" class="sidebar-icon">
-                <img src="../icons/settings.svg" alt="" class="sidebar-icon">
-                <img src="../icons/logout.svg" alt="logout" class="sidebar-icon">
+                <img src="icons/dashboard.svg" alt="" class="sidebar-icon">
+                <img src="icons/contacts.svg" alt="" class="sidebar-icon">
+                <img src="icons/inbox.svg" alt="" class="sidebar-icon">
+                <img src="icons/graph.svg" alt="" class="sidebar-icon">
+                <img src="icons/settings.svg" alt="" class="sidebar-icon">
+                <a href="logout.php"><img src="icons/logout.svg" alt="logout" class="sidebar-icon"></a>
             </div>
         </div>
     </nav>
@@ -34,16 +45,16 @@
         <div class="search-container">
             <div class="search-bar">
                 <input type="text" placeholder="Search.." class="search">
-                <img src="../icons/search.svg" alt="Search Icon" class="search-icon">
+                <img src="icons/search.svg" alt="Search Icon" class="search-icon">
             </div>
         </div>
         <!-- Button at the top to show the Add Product Form for Desktop -->
         <button class="add" id="add-desktop" onclick="viewAdd()">+ Add Product</button>
         <!-- Top Right Icons -->
         <div class="top-right-icons">
-            <img src="../icons/bell.svg" alt="" class="tr-icon">
-            <img src="../icons/message.svg" alt="" class="tr-icon">
-            <img src="../icons/user.svg" alt="" class="tr-icon">
+            <img src="icons/bell.svg" alt="" class="tr-icon">
+            <img src="icons/message.svg" alt="" class="tr-icon">
+            <img src="icons/user.svg" alt="" class="tr-icon">
         </div>
     </section>
     <!-- Fixed Buttons on the Bottom *before the middle section so that the buttons show on top of the middle section on desktop-->
@@ -66,8 +77,8 @@
     <section class="middle-section">
         <!-- Edit Confirmation Overlay -->
         <div class="edit-confirm" id="edit-confirm">
-            <img class="close" src="../icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
-            <h3 class="name">HP Pavilion G4</h3>
+            <img class="close" src="icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
+            <h3 class="name"></h3>
             <p class="sure">Are you sure you wanna edit this product ?</p>
             <!-- Buttons for Confirmation -->
             <div class="overlay-buttons" id="overlay-edit-buttons">
@@ -77,21 +88,25 @@
         </div>
         <!-- Delete Confirmation Overlay -->
         <div class="delete-confirm" id="delete-confirm">
-            <img class="close" src="../icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
-            <h3 class="name">HP Pavilion G4</h3>
+            <img class="close" src="icons/close.svg" alt="Close Overlay" onclick="closeOverlay()">
+            <form action="delete-product.php" class="delete-form" id="delete-form" method="GET">
+                <!-- Hidden Input to take the Id -->
+                <input type="text" id="id-delete" name="id-delete" readonly>
+            </form>
+            <h3 class="name"></h3>
             <p class="sure">Are you sure you wanna delete this product ?</p>
             <!-- Buttons for Confirmation -->
             <div class="overlay-buttons" id="overlay-delete-buttons">
-                <button class="yes" onclick="closeDeleteOverlay()">Yes</button>
+                <button class="yes" type="submit" form="delete-form" id="yes-delete">Yes</button> <!-- onclick="closeDeleteOverlay()" -->
                 <button class="no" onclick="closeOverlay()">No</button>
             </div>
         </div>
         <!-- Add Product Form -->
         <div class="add-product" id="add-product">
             <!-- Icons at the top left -->
-            <img class="return" src="../icons/return.svg" alt="Return to Previous Page" onclick="closeAdd()">
+            <img class="return" src="icons/return.svg" alt="Return to Previous Page" onclick="closeAdd()">
             <!-- Icons at the top left -->
-            <form action="" class="add-form" id="add-form" method="GET">
+            <form action="add-product.php" class="add-form" id="add-form" method="POST">
                 <div class="tooltip">
                     <input type="text" id="name" name="name" placeholder="Name">
                     <svg xmlns="http://www.w3.org/2000/svg" width="55px" height="25px" viewBox="0 0 24.88 24.88"
@@ -164,11 +179,11 @@
         <!-- Product Details -->
         <div class="product-details" id="product-details">
             <div class="lap-img-container">
-                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="details">
                 <!-- Compress Icons to close the details popup -->
-                <img class="compress" src="../icons/compress.svg" alt="Compress to Hide Product Details"onclick="closeDetails()">
+                <img class="compress" src="icons/compress.svg" alt="Compress to Hide Product Details"onclick="closeDetails()">
                 <!-- Empty fields to hold the hidden details for each product depending on which selected -->
                 <p class="id"></p>
                 <h3 class="name"></h3>
@@ -186,17 +201,19 @@
         <!-- Edit Product Form -->
         <div class="edit-product" id="edit-product">
             <!-- Return Icon to previous "page" -->
-            <img class="return" src="../icons/return.svg" alt="Return to Previous Page" onclick="closeEdit()">
+            <img class="return" src="icons/return.svg" alt="Return to Previous Page" onclick="closeEdit()">
             <!-- Base Information -->
             <div class="lap-img-container">
-                <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
+                <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
             </div>
             <div class="base-edit">
                 <h3 class="name"></h3>
                 <p class="brand"></p>
             </div>
 
-            <form action="" class="edit-form" id="edit-form" method="GET">
+            <form action="edit-product.php" class="edit-form" id="edit-form" method="POST">
+                <!-- Hidden Input to take the Id -->
+                <input type="text" id="id-edit" name="id" readonly>
 
                 <label for="microprocessor">Microprocessor :</label>
                 <div class="tooltip">
@@ -249,60 +266,46 @@
             </form>
         </div>
         <!-- All Products -->
+        <?php foreach ($products as $row) { ?>
+
         <div class="all-products" id="all-products">
-            <div class="product">
-                <!-- Expand Icon to show the details -->
-                <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details">
-                <!-- Hidden Product Details informations to be inserted into the Details Popup and the input fields of the Edit Form -->
-                <div class="hidden_information">
-                    <p class="id">1</p>
-                    <div class="base">
-                        <h3 class="name">HP Pavilion G4</h3>
-                        <p class="brand">HP (Hewlett-Packard)</p>
-                    </div>
-                    <p class="cpu">2.5GHz AMD Dual-Core</p>
-                    <p class="ram">8GB</p>
-                    <p class="gpu">AMD Radeon 6480</p>
-                    <p class="hdd">320GB</p>
-                </div>
-                <!-- Base Information -->
-                <div class="lap-img-container">
-                    <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
-                </div>
-                <div class="base">
-                    <h3 class="name">HP Pavilion G4</h3>
-                    <p class="brand">HP (Hewlett-Packard)</p>
-                </div>
-            </div>
 
             <div class="product">
                 <!-- Expand Icon to show the details -->
-                <img class="expand" src="../icons/expand.svg" alt="Expand to View Product Details">
+                <img class="expand" src="icons/expand.svg" alt="Expand to View Product Details">
                 <!-- Hidden Product Details informations to be inserted into the Details Popup and the input fields of the Edit Form -->
                 <div class="hidden_information">
-                    <p class="id">2</p>
+                    <p class="id"><?php echo $row['productId']?></p>
                     <div class="base">
-                        <h3 class="name">Dell Latitude 5140</h3>
-                        <p class="brand">Dell</p>
+                        <h3 class="name"><?php echo $row['productName']?></h3>
+                        <p class="brand"><?php echo $row['productBrand']?></p>
                     </div>
-                    <p class="cpu">2.8GHz Intel Quad-Core</p>
-                    <p class="ram">16GB</p>
-                    <p class="gpu">Nvidia GTX 2070</p>
-                    <p class="hdd">1024GB</p>
+                    <p class="cpu"><?php echo $row['productCpu']?></p>
+                    <p class="ram"><?php echo $row['productRam']?></p>
+                    <p class="gpu"><?php echo $row['productGpu']?></p>
+                    <p class="hdd"><?php echo $row['productHdd']?></p>
                 </div>
                 <!-- Base Information -->
                 <div class="lap-img-container">
-                    <img class="lap-img" src="../images/laptop.png" alt="Laptop Picture">
+                    <img class="lap-img" src="images/laptop.png" alt="Laptop Picture">
                 </div>
                 <div class="base">
-                    <h3 class="name">Dell Latitude 5140</h3>
-                    <p class="brand">Dell</p>
+                    <h3 class="name"><?php echo $row['productName']?></h3>
+                    <p class="brand"><?php echo $row['productBrand']?></p>
                 </div>
             </div>
             
         </div>
+
+        <?php } ?>
     </section>
     <!-- Javascript File -->
-    <script src="../javascript/dashboard.js"></script>
+    <script src="javascript/dashboard.js"></script>
 </body>
 </html>
+<?php 
+}else{
+     header("Location: index.php");
+     exit();
+}
+?>
