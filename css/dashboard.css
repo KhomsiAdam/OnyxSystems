@@ -393,6 +393,10 @@ h1 {
   width: auto;
 }
 
+.edit-product #id-edit {
+  display: none;
+}
+
 .edit-product input {
   width: 75vw;
 }
@@ -407,6 +411,11 @@ h1 {
   z-index: 6;
   position: fixed;
   left: 5%;
+  display: none;
+}
+
+.edit-confirm .delete-form #id-delete,
+.delete-confirm .delete-form #id-delete {
   display: none;
 }
 

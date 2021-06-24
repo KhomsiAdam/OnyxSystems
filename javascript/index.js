@@ -7,6 +7,7 @@ if(error)
      document.getElementById("password").style.borderBottom="5px solid #C73A3A"; 
  } */
 
+ var form = document.getElementById('form');
  var loginSubmit = document.getElementById('login-submit');
  var login = document.getElementById('username');
  var pwd = document.getElementById('password');
@@ -17,7 +18,7 @@ loginSubmit.addEventListener('click', function(event) {
     event.preventDefault();
 })
 
- function checkempty() {
+function checkempty() {
     if ( login.value === '' || pwd.value === '' ) {
         errorMsg.style.display = "block";
         login.style.borderBottom="5px solid #C73A3A";
@@ -26,5 +27,6 @@ loginSubmit.addEventListener('click', function(event) {
         errorMsg.style.display = "none";
         login.style.borderBottom="5px solid #f3f4fa";
         pwd.style.borderBottom="5px solid #f3f4fa";
+        form.submit();
     }
- }
+}

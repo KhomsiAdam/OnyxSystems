@@ -331,6 +331,9 @@ h1 {
             width: auto;
         }
     }
+    #id-edit {
+        display: none;
+    }
     input {
         @extend %input;
         width: 75vw;
@@ -348,6 +351,11 @@ h1 {
     position: fixed;
     left: 5%;
     display: none;
+    .delete-form {
+        #id-delete {
+            display: none;
+        }
+    }
     .close {
         position: absolute;
         top: 4.5%;

@@ -106,6 +106,7 @@ function viewEdit() {
 function editHiddenDetails(){
     document.querySelector('.base-edit .name').innerHTML=document.querySelector('.details .name').innerHTML;
     document.querySelector('.base-edit .brand').innerHTML=document.querySelector('.details .brand').innerHTML;
+    document.getElementById('id-edit').value=document.querySelector('.details .id').innerHTML;
     document.getElementById('micro-edit').value=document.querySelector('.details .cpu').innerHTML;
     document.getElementById('memory-edit').value=document.querySelector('.details .ram').innerHTML;
     document.getElementById('graphique-edit').value=document.querySelector('.details .gpu').innerHTML;
@@ -122,11 +123,15 @@ function closeEdit() {
 function confirmEdit() {
     editConfirm.style.display = "block";
     overEditButtons.style.display = "flex";
+    document.querySelector('.edit-confirm .name').innerHTML=document.querySelector('.details .name').innerHTML;
+
 }
 // Delete Product Confirm Overlay
 function confirmDelete() {
     deleteConfirm.style.display = "block";
     overDeleteButtons.style.display = "flex";
+    document.getElementById('id-delete').value=document.querySelector('.details .id').innerHTML;
+    document.querySelector('.delete-confirm .name').innerHTML=document.querySelector('.details .name').innerHTML;
 }
 // Close Edit and Delete Overlay
 function closeOverlay() {
@@ -400,6 +405,18 @@ edit_button.addEventListener('click', function(event) {
         edit_form.submit();
     }
 })
+
+// Submit Delete Form
+/* var delete_form = document.getElementById('delete-form');
+var delete_button = document.getElementById('yes-delete');
+
+delete_button.addEventListener('click', function() {
+    event.preventDefault();
+    if (cpuSubmitEdit === true && ramSubmitEdit === true && gpuSubmitEdit === true && hddSubmitEdit === true ) {
+        delete_form.submit();
+    }
+
+}) */
 
 // On mouse hover over info icon show tooltip to fill the Add Product Form
 // Name
